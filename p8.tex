@@ -1,0 +1,102 @@
+\section{Pregunta N$^{\circ}$8\qquad Carlos Alonso Aznarán Laos}
+
+\begin{frame}[fragile]
+    \begin{enumerate}\setcounter{enumi}{7}
+        \item
+
+
+              Sea $\Omega=\left(0,L\right)\subset\mathbb{R}$. Obtenga
+              la formulación variacional o débil del problema
+              de valor de frontera de orden cuatro
+
+              \begin{equation*}
+                  \begin{cases}
+                      {\left(
+                          \alpha\left(x\right)
+                              {u\left(x\right)}^{\prime\prime}
+                      \right)}^{\prime\prime}=f\left(x\right) &
+                      \text { para }
+                      x\in\left(0,L\right).                                                       \\
+                      u\left(0\right)=
+                      u\left(L\right)=0
+                                                              & \text { para }x\in\partial\Omega. \\
+                      u^{\prime}\left(0\right)=
+                      u^{\prime}\left(L\right)=
+                      0                                       &
+                      \text { para }x\in\partial\Omega.
+                  \end{cases}
+              \end{equation*}
+
+    \end{enumerate}
+
+    \begin{solution}
+        % Para encontrar la formulación variacional del PVF, definir el problema y los espacios funcionales involucrados.
+
+        Sean $\left(L^{2}(\Omega),\left\|\cdot\right\|_{L^{2}(\Omega)}\right)$ un espacio de Hilbert real y
+        \begin{math}
+            V\coloneqq
+            \left\{
+            u\mid
+            u,
+            u^{\prime},
+            u^{\prime\prime}\in
+            L^{2}(\Omega)
+            \right\}
+        \end{math}.
+        La formulación débil se obtiene multiplicando la ecuación por
+        las funciones test $v\in V$ e integrando sobre $\Omega$.
+        Luego integramos por partes para manejar las derivadas.
+
+
+        La forma débil viene dada encontrando $u\in V$ tal que $\forall \alert{v} \in V:$
+
+        \begin{equation*}
+            \int_{0}^{L}
+            {
+            \left(
+            \alpha\left(x\right)
+                {u\left(x\right)}^{\prime\prime}
+            \right)
+            }^{\prime\prime}
+            \alert{v}\dl x =
+            \int_{0}^{L}
+            f\left(x\right)\cdot
+            \alert{v}
+            \dl x.
+        \end{equation*}
+
+        Ahora, integra por partes varias veces:
+
+        \begin{align*}
+            \int_0^L (\alpha u''')'' v \,dx & = -\int_0^L (\alpha u''')'v' \,dx + [\alpha u''')'v]_0^L                                 \\
+                                            & = \int_0^L (\alpha u''')'v' \,dx + \int_0^L \alpha' u'''v' \,dx + [\alpha u'')'v']_0^L   \\
+                                            & = -\int_0^L (\alpha' u''')'v \,dx + \int_0^L \alpha'' u'''v \,dx + [\alpha' u''')v']_0^L \\
+                                            & = \int_0^L (\alpha' u''')'v \,dx + \int_0^L \alpha'' u'''v \,dx + [\alpha' u'')v]_0^L
+        \end{align*}
+    \end{solution}
+\end{frame}
+
+\begin{frame}
+    \begin{solution}
+        \begin{align*}
+             & = -\int_0^L (\alpha'' u''')v \,dx + \int_0^L \alpha''' u''v \,dx + [\alpha'' u'')v']_0^L \\
+             & = \int_0^L \alpha'' u'''v \,dx + \int_0^L \alpha''' u''v \,dx + [\alpha'' u')v]_0^L      \\
+             & = -\int_0^L \alpha''' u''v \,dx + \int_0^L \alpha'''' u v \,dx + [\alpha''' u)v']_0^L    \\
+             & = \int_0^L \alpha''' u''v \,dx + \int_0^L \alpha'''' u v \,dx - [\alpha''' u)v']_0^L.
+        \end{align*}
+
+        Ahora, sustituye esto nuevamente en la forma débil:
+
+        \begin{equation*}
+            \int_0^L \alpha''' u''v \,dx + \int_0^L \alpha'''' u v \,dx - [\alpha''' u)v']_0^L = \int_0^L f \cdot v \,dx.
+        \end{equation*}
+
+        Finalmente, aplique las condiciones de frontera \( u(0) = u(L) = u'(0) = u'(L) = 0 \) para eliminar los términos de frontera, lo que lleva a la formulación variacional débil:
+
+        \begin{equation*}
+            \int_0^L \alpha''' u''v \,dx + \int_0^L \alpha'''' u v \,dx = \int_0^L f \cdot v \,dx.
+        \end{equation*}
+
+        Esta es la formulación variacional del PVF de cuarto orden dado.
+    \end{solution}
+\end{frame}
